@@ -3,13 +3,19 @@ package com.bridgelabz;
 public class EmployeeWageBuilder {
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation Program");
-        int IS_FULL_TIME = 1; //constant
-        //check employee attendance
+        //constant
+        int IS_PRESENT = 1;
+        int WAGE_PER_HOUR = 20;
+        int FULL_TIME = 8;
+        int dailyWage = 0;
+        //calculation
         double empcheck = Math.floor(Math.random() * 10) % 2;
-        if (empcheck == IS_FULL_TIME)
-            System.out.println("Employee is present");
-        else
-            System.out.println("Employee is absent");
-
+        if (IS_PRESENT == empcheck) {
+            System.out.println("Employee is present"); //Employee is present
+            dailyWage = WAGE_PER_HOUR * FULL_TIME;
+        } else {
+            System.out.println("Employee is absent");  //Employee is absent
+        }
+        System.out.println("Employee Wage = " + dailyWage);
     }
 }
