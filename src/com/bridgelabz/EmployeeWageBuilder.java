@@ -14,17 +14,20 @@ public class EmployeeWageBuilder {
         int empHrs = 0;
 
         //calculation
-        double empcheck = Math.floor(Math.random() * 10) % 3;
+        int empcheck = (int) Math.floor(Math.random() * 10) % 3;
 
-        if (IS_FULL_TIME == empcheck) {
-            empHrs = 8;
-            System.out.println("Employee is present and working as a Full-Time employee");  //Full time
-        } else if (IS_PART_TIME == empcheck) {
-            empHrs = 4;
-            System.out.println("Employee is present and working as a Part-Time employee ");  //Part time
-        } else {
-            empHrs = 0;
-            System.out.println("Employee is abscent ");  //Abscent
+        switch (empcheck) {
+            case 1:
+                empHrs = 8;
+                System.out.println("Employee is present and working as a Full-Time employee");  //Full time
+                break;
+            case 2:
+                empHrs = 4;
+                System.out.println("Employee is present and working as a Part-Time employee ");  //Part time
+                break;
+            default:
+                empHrs = 0;
+                System.out.println("Employee is Absent ");  //Absent
         }
 
         dailyWage = empHrs * WAGE_PER_HOUR;
