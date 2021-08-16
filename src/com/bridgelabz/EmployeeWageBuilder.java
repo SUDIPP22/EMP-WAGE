@@ -9,21 +9,35 @@ package com.bridgelabz;
  */
 public class EmployeeWageBuilder {
 
+    private final String company;
+    private final int empWagePerHour;
+    private final int numOfWorkingDays;
+    private final int maxHoursInMonth;
+    private int totalEmpWage;
+
+    /**
+     * @param company This is the first parameter of EmployeeWage constructor
+     * which represents company name
+     * @param empWagePerHour This is the second parameter of EmployeeWage constructor
+     * which consists employee rate per hour
+     * @param numOfWorkingDays This is the third parameter of EmployeeWage constructor
+     * which consists the number of working days of an employee
+     * @param maxHoursInMonth This is the fourth parameter of EmployeeWage constructor
+     * which hold the maximum hours the employee will be working
+     */
+    public EmployeeWageBuilder(String company, int empWagePerHour, int numOfWorkingDays, int maxHoursInMonth) {
+        this.company = company;
+        this.empWagePerHour = empWagePerHour;
+        this.numOfWorkingDays = numOfWorkingDays;
+        this.maxHoursInMonth = maxHoursInMonth;
+    }
+
     /**
      * This method is used to calculate Employee wage for
      * different companies in a procedural way.
-     * @param company This is the first parameter of computeEmployeeWage method
-     * which represents company name
-     * @param empWagePerHour This is the second parameter of computeEmployeeWage method
-     * which consists employee rate per hour
-     * @param numOfWorkingDays This is the third parameter of computeEmployeeWage method
-     * which consists the number of working days of an employee
-     * @param maxHoursInMonth This is the fourth parameter of computeEmployeeWage method
-     * which hold the maximum hours the employee will be working
-     * @return Employee's total wage
+     *
      */
-    public static int computeEmployeeWage(String company, int empWagePerHour,
-                                          int numOfWorkingDays, int maxHoursInMonth) {
+    public void computeEmployeeWage() {
         //variables
         int totalEmpHrs = 0;
         int empHrs;
@@ -49,18 +63,33 @@ public class EmployeeWageBuilder {
             totalEmpHrs += empHrs;
             System.out.println("\nDay " + totalWorkingDays + " : Employee worked : " + empHrs + " Hours ");
         }
-        int totalEmpWage = totalEmpHrs * empWagePerHour;
+        totalEmpWage = totalEmpHrs * empWagePerHour;
         System.out.println("\nTotal Wage for Company " + company + " is : " + totalEmpWage);
-        return totalEmpWage;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeWageBuilder{" +
+                "company='" + company + '\'' +
+                ", empWagePerHour=" + empWagePerHour +
+                ", numOfWorkingDays=" + numOfWorkingDays +
+                ", maxHoursInMonth=" + maxHoursInMonth +
+                ", totalEmpWage=" + totalEmpWage +
+                '}';
     }
 
     /**
-     * This is the main method which makes use of computeEmployeeWage method
+     * This is the main method which makes use of EmployeeWage constructor and
+     * create one object to initiate the values.
      * @param args Unused.
      */
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation Program");
-        computeEmployeeWage("BIG BAZAAR", 20, 20, 80);
-        computeEmployeeWage("D-MART", 40, 30, 100);
+        EmployeeWageBuilder dMart = new EmployeeWageBuilder("D-MART", 40, 30, 100);
+        EmployeeWageBuilder bigBazaar = new EmployeeWageBuilder("BIG BAZAAR", 20, 20, 80);
+        dMart.computeEmployeeWage();
+        System.out.println(dMart);
+        bigBazaar.computeEmployeeWage();
+        System.out.println(bigBazaar);
     }
 }
